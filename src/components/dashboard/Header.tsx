@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
         <div className="flex items-center gap-3">
           <Hospital className="h-8 w-8 text-primary-foreground" />
           <h1 className="text-xl font-bold text-primary-foreground">
-            Devbhoomi Clinic
+            Homeopathic Chikitsha Kendra
           </h1>
         </div>
         
