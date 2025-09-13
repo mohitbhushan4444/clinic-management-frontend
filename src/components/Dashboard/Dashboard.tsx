@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { 
-  UserPlus, 
-  Stethoscope, 
-  Calendar, 
-  Package, 
-  CreditCard, 
+import {
+  UserPlus,
+  Stethoscope,
+  Calendar,
+  Package,
+  CreditCard,
   BarChart3,
   Bell,
   Search,
@@ -25,6 +25,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import PatientManagement from "../Patient/PatientManagement";
 
 interface DashboardProps {
   onLogout?: () => void;
@@ -53,7 +54,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
       priority: "high"
     },
     {
-      title: "Doctor Management", 
+      title: "Doctor Management",
       description: "Manage doctor profiles, schedules, specializations and availability for optimal patient care.",
       icon: Stethoscope,
       gradient: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -115,35 +116,35 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
   ];
 
   const quickStats = [
-    { 
-      label: "Total Patients", 
-      value: "1,247", 
-      change: "+12%", 
-      icon: Users, 
+    {
+      label: "Total Patients",
+      value: "1,247",
+      change: "+12%",
+      icon: Users,
       gradient: "from-blue-500 to-cyan-400",
       bgColor: "bg-blue-50"
     },
-    { 
-      label: "Today's Visits", 
-      value: "89", 
-      change: "+8%", 
-      icon: Calendar, 
+    {
+      label: "Today's Visits",
+      value: "89",
+      change: "+8%",
+      icon: Calendar,
       gradient: "from-purple-500 to-violet-400",
       bgColor: "bg-purple-50"
     },
-    { 
-      label: "Active Staff", 
-      value: "24", 
-      change: "+2", 
-      icon: Stethoscope, 
+    {
+      label: "Active Staff",
+      value: "24",
+      change: "+2",
+      icon: Stethoscope,
       gradient: "from-emerald-500 to-teal-400",
       bgColor: "bg-emerald-50"
     },
-    { 
-      label: "Revenue", 
-      value: "₹2.4L", 
-      change: "+15%", 
-      icon: TrendingUp, 
+    {
+      label: "Revenue",
+      value: "₹2.4L",
+      change: "+15%",
+      icon: TrendingUp,
       gradient: "from-green-500 to-emerald-400",
       bgColor: "bg-green-50"
     }
@@ -158,16 +159,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
 
   if (currentView === "patient-management") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 p-8">
-        <Button onClick={() => setCurrentView("dashboard")} className="mb-4 bg-gradient-to-r from-blue-600 to-cyan-600">
-          ← Back to Dashboard
-        </Button>
-        <div className="text-center text-gray-500 bg-white/70 backdrop-blur-sm rounded-2xl p-12 shadow-2xl">
-          <Hospital className="h-16 w-16 mx-auto mb-4 text-blue-600" />
-          <h2 className="text-2xl font-bold mb-2">Patient Management System</h2>
-          <p>Advanced patient management features coming soon...</p>
-        </div>
-      </div>
+      <PatientManagement onBack={() => setCurrentView("dashboard")} />
     );
   }
 
@@ -210,32 +202,32 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
               <p className="text-sm text-slate-600 font-medium">Advanced Healthcare Management</p>
             </div>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-6">
             <div className="relative group">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-blue-600 transition-colors" />
-              <Input 
-                placeholder="Search patients, doctors, appointments..." 
+              <Input
+                placeholder="Search patients, doctors, appointments..."
                 className="pl-12 pr-4 py-3 w-96 bg-white/70 border-0 shadow-lg focus:shadow-xl focus:bg-white transition-all duration-300 rounded-xl"
               />
-              <Button 
-                size="sm" 
+              <Button
+                size="sm"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 rounded-lg px-3"
               >
                 <Search className="h-4 w-4" />
               </Button>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <Button variant="ghost" size="sm" className="relative hover:bg-blue-50 rounded-xl">
                 <Bell className="h-5 w-5 text-gray-600" />
                 <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-semibold shadow-lg">3</span>
               </Button>
-              
+
               <Button variant="ghost" size="sm" className="hover:bg-blue-50 rounded-xl">
                 <Settings className="h-5 w-5 text-gray-600" />
               </Button>
-              
+
               <Button
                 onClick={handleLogout}
                 className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-6"
@@ -254,7 +246,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
           <div className="flex items-center justify-between mb-8">
             <div className="space-y-2">
               <h2 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
-                Welcome back, Dr. Administrator! 
+                Welcome back, Dr. Administrator!
                 <span className="text-3xl">👋</span>
               </h2>
               <p className="text-gray-600 text-xl">
@@ -271,26 +263,26 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                 </div>
               </div>
             </div>
-            
+
             <div className="text-right bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
               <div className="text-sm text-gray-500 mb-1">Today's Date</div>
               <div className="text-2xl font-bold text-gray-800 mb-1">
-                {new Date().toLocaleDateString('en-US', { 
-                  weekday: 'long', 
+                {new Date().toLocaleDateString('en-US', {
+                  weekday: 'long',
                   day: 'numeric'
                 })}
               </div>
               <div className="text-lg text-gray-600">
-                {new Date().toLocaleDateString('en-US', { 
-                  month: 'long', 
+                {new Date().toLocaleDateString('en-US', {
+                  month: 'long',
                   year: 'numeric'
                 })}
               </div>
               <div className="mt-3 flex items-center justify-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-blue-600" />
                 <span className="text-blue-600 font-medium">
-                  {new Date().toLocaleTimeString('en-US', { 
-                    hour: '2-digit', 
+                  {new Date().toLocaleTimeString('en-US', {
+                    hour: '2-digit',
                     minute: '2-digit'
                   })}
                 </span>
@@ -317,7 +309,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                     <span className="text-xs text-gray-500">vs last month</span>
                   </div>
                 </div>
-                
+
                 <div>
                   <p className="text-sm font-semibold text-gray-600 mb-2">{stat.label}</p>
                   <p className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</p>
@@ -347,10 +339,10 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                 </Button>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {dashboardCards.map((card, index) => (
-                <Card 
+                <Card
                   key={index}
                   className={`group cursor-pointer transition-all duration-700 hover:shadow-2xl hover:-translate-y-3 bg-white/80 backdrop-blur-sm border-0 shadow-xl relative overflow-hidden ${card.shadowColor} hover:shadow-2xl`}
                   onClick={card.onClick}
@@ -363,13 +355,13 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                       </div>
                     </div>
                   )}
-                  
+
                   {/* Animated Background */}
                   <div className={`absolute inset-0 ${card.bgGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                  
+
                   {/* Gradient Overlay */}
                   <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${card.gradient} opacity-10 rounded-full -translate-y-20 translate-x-20 group-hover:scale-150 group-hover:opacity-20 transition-all duration-700`}></div>
-                  
+
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                     <div style={{
@@ -377,7 +369,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                       backgroundSize: '30px 30px'
                     }} className="w-full h-full"></div>
                   </div>
-                  
+
                   <CardHeader className="relative z-10 pb-4">
                     <div className="flex items-center justify-between mb-6">
                       <div className={`p-4 rounded-2xl bg-gradient-to-br ${card.gradient} shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
@@ -392,7 +384,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-gray-900 transition-colors mb-3">
                       {card.title}
                     </CardTitle>
@@ -400,15 +392,15 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                       {card.description}
                     </CardDescription>
                   </CardHeader>
-                  
+
                   <CardContent className="relative z-10 pt-0">
                     <div className="flex items-center justify-between">
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
+                      <Button
+                        variant="ghost"
+                        size="sm"
                         className={`text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 h-auto font-bold group-hover:translate-x-2 transition-all duration-300 flex items-center gap-2`}
                       >
-                        Access Module 
+                        Access Module
                         <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </Button>
                       <div className="flex items-center gap-2">
@@ -545,7 +537,7 @@ const Dashboard = ({ onLogout }: DashboardProps) => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-8 text-sm">
               <div className="flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full">
                 <Shield className="h-4 w-4 text-green-600" />
